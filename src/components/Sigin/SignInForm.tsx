@@ -89,7 +89,7 @@ export default function SignInForm() {
         localStorage.setItem("user", JSON.stringify({
           name: formData.name,
           phone: formData.phone,
-          role: "TICKETLY_ADMIN"
+          role: "EDUFLOW_ADMIN"
         }));
         navigate("/");
       }, 500);
@@ -104,22 +104,30 @@ export default function SignInForm() {
 
         <div className="mb-6 bg-black/60 w-20 h-20 rounded-2xl grid place-items-center backdrop-blur-md border border-white/5 shadow-2xl">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none">
+            {/* Graduation cap */}
             <path
-              d="M12 2l8.5 4.8v10.4L12 22l-8.5-4.8V6.8L12 2z"
-              stroke="white"
-              strokeWidth="1.5"
+              d="M12 3L2 8l10 5 10-5-10-5z"
+              fill="white"
+              opacity="0.9"
             />
             <path
-              d="M12 7.2v9.6M7.8 9.3l8.4 5.4"
+              d="M6 10.5v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5"
               stroke="white"
               strokeWidth="1.5"
-              opacity="0.85"
+              fill="none"
+              strokeLinecap="round"
+            />
+            <path
+              d="M20 8v5"
+              stroke="white"
+              strokeWidth="1.5"
+              strokeLinecap="round"
             />
           </svg>
         </div>
 
         <div className="relative z-10">
-          <h1 className="text-5xl font-extrabold mb-4 tracking-tight leading-tight">Ticketly.</h1>
+          <h1 className="text-5xl font-extrabold mb-4 tracking-tight leading-tight">EduFlow.</h1>
           <p className="text-lg opacity-80 max-w-md leading-relaxed">Secure access to your admin dashboard.</p>
         </div>
       </div>

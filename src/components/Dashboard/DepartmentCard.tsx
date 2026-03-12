@@ -21,7 +21,7 @@ interface DepartmentCardProps {
 
 export function DepartmentCard({ dept, hod, onAssign, onDelete, onNavigate }: DepartmentCardProps) {
     // Generate pseudo-data
-    const hodEmail = hod ? `${hod.name.toLowerCase().replace(/\s+/g, '.')}@ticketly.edu` : "unassigned@ticketly.edu";
+    const hodEmail = hod ? `${hod.name.toLowerCase().replace(/\s+/g, '.')}@eduflow.edu` : "unassigned@eduflow.edu";
 
     const handleCardClick = () => {
         if (onNavigate) {

@@ -33,7 +33,11 @@ export function LogoLoader({ className, size = "md" }: LogoLoaderProps) {
                     repeat: Infinity,
                 }}
             >
-                <span className="text-white font-bold tracking-tighter mix-blend-overlay">T</span>
+                <svg viewBox="0 0 24 24" fill="none" className="w-1/2 h-1/2">
+                    <path d="M12 3L2 8l10 5 10-5-10-5z" fill="white" opacity="0.95" />
+                    <path d="M6 10.5v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5" stroke="white" strokeWidth="2" fill="none" strokeLinecap="round" />
+                    <path d="M20 8v5" stroke="white" strokeWidth="2" strokeLinecap="round" />
+                </svg>
             </motion.div>
         </div>
     );

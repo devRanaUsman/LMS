@@ -54,7 +54,7 @@ export default function DashboardLayout() {
                         </Tooltip>
                     </TooltipProvider>
                     <span className="ml-3 text-lg font-bold bg-gradient-to-r from-violet-600 to-indigo-600 text-transparent bg-clip-text">
-                        Ticketly
+                        EduFlow
                     </span>
                 </div>
 

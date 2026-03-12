@@ -101,7 +101,11 @@ export function Sidebar() {
                 <div className={cn("h-20 p-8 flex items-center transition-all duration-300 px-6", collapsed ? "justify-start" : "justify-start")}>
                     <div className="flex items-center gap-3">
                         <div className="w-8 h-8 rounded-lg bg-blue-600 flex items-center justify-center flex-shrink-0 shadow-lg shadow-violet-500/20">
-                            <span className="text-white font-bold text-lg">T</span>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                                <path d="M12 3L2 8l10 5 10-5-10-5z" fill="white" opacity="0.95" />
+                                <path d="M6 10.5v5c0 1.66 2.69 3 6 3s6-1.34 6-3v-5" stroke="white" strokeWidth="1.8" fill="none" strokeLinecap="round" />
+                                <path d="M20 8v5" stroke="white" strokeWidth="1.8" strokeLinecap="round" />
+                            </svg>
                         </div>
                         <AnimatePresence mode="wait">
                             {!collapsed && (
@@ -112,7 +116,7 @@ export function Sidebar() {
                                     transition={{ duration: 0.2 }}
                                     className="text-xl font-bold bg-gradient-to-r from-white to-slate-400 text-transparent bg-clip-text whitespace-nowrap overflow-hidden"
                                 >
-                                    Ticketly
+                                    EduFlow
                                 </motion.span>
                             )}
                         </AnimatePresence>

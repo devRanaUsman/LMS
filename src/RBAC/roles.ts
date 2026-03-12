@@ -1,11 +1,11 @@
 export const ROLE_PERMISSIONS = {
-    TICKETLY_ADMIN: ["*"],
+    EDUFLOW_ADMIN: ["*"],
 
     // READ_ONLY: [
     //     "*.view",
     // ],
 
-    TICKETLY_SALES: [
+    EDUFLOW_SALES: [
         "events.view",
         "registration.*",
         "registration.invoice",
