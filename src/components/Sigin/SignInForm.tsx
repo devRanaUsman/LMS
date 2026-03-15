@@ -7,6 +7,14 @@ import { Label } from "../ui/label";
 // import { signIn, signUp } from "../../services/authService";
 import { cn } from "../../lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
+import { ChevronDown } from "lucide-react";
+
+const ROLE_OPTIONS = [
+  { value: "MAIN_AUTHORITY", label: "Super Admin" },
+  { value: "SCHOOL_PRINCIPAL", label: "Principal" },
+  { value: "HOD", label: "Head of Department" },
+  { value: "TEACHER", label: "Teacher" },
+];
 
 export default function SignInForm() {
   const [mode, setMode] = useState<"signin" | "signup">("signin");
@@ -18,6 +26,7 @@ export default function SignInForm() {
     phone: "",
     password: "",
     confirmPassword: "",
+    role: "TEACHER",
   });
 
   const [showPassword, setShowPassword] = useState(false);
@@ -58,18 +67,23 @@ export default function SignInForm() {
     setFormData((prev) => ({ ...prev, phone: val }));
   };
 
+  const handleRoleChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
+    setFormData((prev) => ({ ...prev, role: e.target.value }));
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setIsLoading(true);
-    // MOck Auth Logic
+    // Mock Auth Logic
     if (mode === "signin") {
       // Simulate API call
       setTimeout(() => {
         if (formData.phone && formData.password) {
+          const selectedRole = ROLE_OPTIONS.find(r => r.value === formData.role);
           localStorage.setItem("user", JSON.stringify({
-            name: "Admin User",
+            name: selectedRole?.label ?? "User",
             phone: formData.phone,
-            role: "MAIN_AUTHORITY" // Default to Super Admin for testing
+            role: formData.role,
           }));
           navigate("/");
         } else {
@@ -89,7 +103,7 @@ export default function SignInForm() {
         localStorage.setItem("user", JSON.stringify({
           name: formData.name,
           phone: formData.phone,
-          role: "EDUFLOW_ADMIN"
+          role: formData.role,
         }));
         navigate("/");
       }, 500);
@@ -287,6 +301,40 @@ export default function SignInForm() {
                     >
                       {showConfirm ? "Hide" : "Show"}
                     </button>
+                  </div>
+                </motion.div>
+              )}
+
+              {/* Role Selector — sign up only */}
+              {mode === "signup" && (
+                <motion.div
+                  key="role-field"
+                  initial={{ opacity: 0, y: -20, height: 0 }}
+                  animate={{ opacity: 1, y: 0, height: "auto" }}
+                  exit={{ opacity: 0, y: -20, height: 0 }}
+                  className="space-y-2 overflow-hidden p-1"
+                >
+                  <Label htmlFor="role">Role</Label>
+                  <div className="relative">
+                    <select
+                      id="role"
+                      name="role"
+                      value={formData.role}
+                      onChange={handleRoleChange}
+                      className={cn(
+                        "w-full appearance-none rounded-md border border-input bg-background px-3 py-2 pr-9 text-sm",
+                        "text-foreground shadow-sm transition-colors",
+                        "focus:outline-none focus:ring-2 focus:ring-ring focus:ring-offset-1",
+                        "hover:border-ring/60"
+                      )}
+                    >
+                      {ROLE_OPTIONS.map((opt) => (
+                        <option key={opt.value} value={opt.value}>
+                          {opt.label}
+                        </option>
+                      ))}
+                    </select>
+                    <ChevronDown className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
                   </div>
                 </motion.div>
               )}
