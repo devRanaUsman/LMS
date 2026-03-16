@@ -12,9 +12,9 @@ export default function Unauthorized() {
                 </div>
 
                 <div className="space-y-2">
-                    <h1 className="text-3xl font-bold text-slate-900">Page Not Found</h1>
+                    <h1 className="text-3xl font-bold text-slate-900">Unauthorized Access</h1>
                     <p className="text-slate-500">
-                        Page not found 404
+                        You don't have permission to view this page.
                     </p>
                 </div>
 
@@ -31,6 +31,12 @@ export default function Unauthorized() {
                         className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 font-medium transition-colors"
                     >
                         Go to Home
+                    </button>
+                    <button
+                        onClick={() => navigate("/signin")}
+                        className="px-4 py-2 bg-slate-700 text-white rounded-lg hover:bg-slate-800 font-medium transition-colors"
+                    >
+                        Sign In
                     </button>
                 </div>
             </div>

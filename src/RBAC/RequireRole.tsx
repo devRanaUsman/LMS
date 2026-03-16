@@ -15,12 +15,12 @@ export const RequireRole = ({ role, redirectTo = "/signin" }: RequireRoleProps) 
         : currentRole === role;
 
     if (!authorized) {
-        // If user is logged in (has a role) but not authorized, send to unauthorized page
-        // If user is not logged in (no role or null), send to signin
-        if (currentRole) {
-            return <Navigate to="/unauthorized" replace />;
+        // If user is not logged in (GUEST = no user in localStorage), send to signin
+        // If user is logged in but doesn't have the required role, send to unauthorized
+        if (currentRole === "GUEST") {
+            return <Navigate to={redirectTo} replace />;
         }
-        return <Navigate to={redirectTo} replace />;
+        return <Navigate to="/unauthorized" replace />;
     }
 
     return <Outlet />;
